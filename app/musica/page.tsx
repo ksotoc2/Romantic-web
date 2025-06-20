@@ -93,9 +93,9 @@ const songs: Song[] = [
   },
   {
     id: "2",
-    title: "All of Me",
+    title: "Ojitos mentirosos",
     artist: "John Legend",
-    catboxId: "ejemplo2.mp3",
+    catboxId: "ldam4c.mp3",
     meaning:
       "Tu canción favorita. Siempre la cantabas cuando estabas feliz, y tu voz era lo más hermoso que había escuchado.",
     duration: "4:29",
