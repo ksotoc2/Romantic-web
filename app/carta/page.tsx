@@ -52,6 +52,16 @@ Cuídate mucho.`);
               <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
                 Palabras sinceras que quería compartir contigo
               </p>
+              <div className="mt-4">
+                <a
+                  href="https://drive.google.com/drive/folders/1xFIMgIpag11WcV656xKuj5giSseiazLo?usp=sharing" // Reemplaza con tu enlace de Drive
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-purple-800 via-purple-600 to-purple-500 text-white px-4 py-2 rounded-md hover:opacity-90 transition duration-300"
+                >
+                  Antes de Abrir, PULSAME!!
+                </a>
+              </div>
             </div>
 
             {/* Envelope */}

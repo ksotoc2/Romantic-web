@@ -12,7 +12,6 @@ const Navigation = () => {
   const navItems = [
     { href: "/", label: "Inicio", icon: Feather },
     { href: "/fotos", label: "Fotos", icon: Camera },
-    { href: "/videos", label: "Videos", icon: Video },
     { href: "/musica", label: "Música", icon: Music },
     { href: "/carta", label: "Carta", icon: Mail },
     { href: "/cumpleanos", label: "Cumpleaños", icon: Gift },

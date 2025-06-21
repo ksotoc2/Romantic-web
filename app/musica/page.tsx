@@ -93,7 +93,7 @@ const colorThemes: ColorTheme[] = [
 const songs: Song[] = [
   {
     id: "1",
-    title: "Cama y mesa",
+    title: "1. Cama y mesa",
     artist: "Roberto Carlos",
     catboxId: "j2cf51.mp3",
     meaning:
@@ -102,7 +102,7 @@ const songs: Song[] = [
   },
   {
     id: "2",
-    title: "Poeta enamorado",
+    title: "2. Poeta enamorado",
     artist: "Grupo Uno",
     catboxId: "41if18.mp3",
     meaning:
@@ -111,7 +111,7 @@ const songs: Song[] = [
   },
   {
     id: "3",
-    title: "Ojos color sol",
+    title: "3. Ojos color sol",
     artist: "Calle 13, Silvio Rodríguez",
     catboxId: "xmfs22.mp3",
     meaning:
@@ -120,7 +120,7 @@ const songs: Song[] = [
   },
   {
     id: "4",
-    title: "Historia de un Amor",
+    title: "4. Historia de un Amor",
     artist: "Eydie Gormé, Los Panchos",
     catboxId: "jggmjm.mp3",
     meaning:
@@ -129,7 +129,7 @@ const songs: Song[] = [
   },
   {
     id: "5",
-    title: "Piel canela",
+    title: "5. Piel canela",
     artist: "Los Panchos, Eydie Gormé",
     catboxId: "uqxfyi.mp3",
     meaning:
@@ -138,7 +138,7 @@ const songs: Song[] = [
   },
   {
     id: "6",
-    title: "Nosotros",
+    title: "6. Nosotros",
     artist: "Eydie Gormé, Los Panchos",
     catboxId: "awrygh.mp3",
     meaning:
@@ -147,7 +147,7 @@ const songs: Song[] = [
   },
   {
     id: "7",
-    title: "Contigo",
+    title: "7. Contigo",
     artist: "Los Panchos",
     catboxId: "gmdi4x.mp3",
     meaning:
@@ -156,7 +156,7 @@ const songs: Song[] = [
   },
   {
     id: "8",
-    title: "Sarà perché ti amo",
+    title: "8. Sarà perché ti amo",
     artist: "Ricchi e Poveri",
     catboxId: "xoidtq.mp3",
     meaning:
@@ -165,7 +165,7 @@ const songs: Song[] = [
   },
   {
     id: "9",
-    title: "Alma dinamita",
+    title: "9. Alma dinamita",
     artist: "Wos",
     catboxId: "bx1gtx.mp3",
     meaning:
@@ -174,7 +174,7 @@ const songs: Song[] = [
   },
   {
     id: "10",
-    title: "Alguien como tú",
+    title: "10. Alguien como tú",
     artist: "Josean Log",
     catboxId: "6wgajc.mp3",
     meaning:
@@ -183,7 +183,7 @@ const songs: Song[] = [
   },
   {
     id: "11",
-    title: "Cuando estás vos",
+    title: "11. Cuando estás vos",
     artist: "Milo J",
     catboxId: "8piw2g.mp3",
     meaning:
@@ -192,7 +192,7 @@ const songs: Song[] = [
   },
   {
     id: "12",
-    title: "Sol",
+    title: "12. Sol",
     artist: "Willian",
     catboxId: "k5dwk0.mp3",
     meaning:
@@ -201,7 +201,7 @@ const songs: Song[] = [
   },
   {
     id: "13",
-    title: "En otra vida",
+    title: "13. En otra vida",
     artist: "Yami Safdie, Lasso",
     catboxId: "cd02x3.mp3",
     meaning:
@@ -210,7 +210,7 @@ const songs: Song[] = [
   },
   {
     id: "14",
-    title: "DtMF",
+    title: "14. DtMF",
     artist: "Bad Bunny",
     catboxId: "t8x2xf.mp3",
     meaning:
@@ -219,7 +219,7 @@ const songs: Song[] = [
   },
   {
     id: "15",
-    title: "La noche más linda",
+    title: "15. La noche más linda",
     artist: "Adalberto Santiago",
     catboxId: "vkuvtj.mp3",
     meaning:
@@ -228,7 +228,7 @@ const songs: Song[] = [
   },
   {
     id: "16",
-    title: "Te quiero",
+    title: "16. Te quiero",
     artist: "Hombres G",
     catboxId: "hd2ay1.mp3",
     meaning:
@@ -237,7 +237,7 @@ const songs: Song[] = [
   },
   {
     id: "17",
-    title: "Te juro que te amo",
+    title: "17. Te juro que te amo",
     artist: "Los Terrícolas",
     catboxId: "sece5m.mp3",
     meaning:
@@ -542,6 +542,14 @@ export default function MusicaPage() {
             className={`text-sm text-${currentColors.accent} font-medium transition-all duration-1000`}
           >
             Tema actual: {currentColors.name}
+          </div>
+          <br />
+          <div className="text-center mt-12 lg:mt-0">
+            <p className="text-slate-500 text-sm">
+              Haz clic en cualquier canción para reproducirla automáticamente •
+              Toca
+              <Info className="h-4 w-4 inline mx-1" /> para ver el significado
+            </p>
           </div>
         </div>
 
@@ -937,13 +945,6 @@ export default function MusicaPage() {
           </div>
         </div>
         <br />
-        <div className="text-center mt-12 lg:mt-0">
-          <p className="text-slate-500 text-sm">
-            Haz clic en cualquier canción para reproducirla automáticamente •
-            Toca
-            <Info className="h-4 w-4 inline mx-1" /> para ver el significado
-          </p>
-        </div>
       </div>
 
       {/* REPRODUCTOR FIJO TIPO SPOTIFY PARA MÓVILES - SIEMPRE VISIBLE */}
