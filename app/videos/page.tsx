@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Play } from "lucide-react"
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 interface Video {
-  id: string
-  catboxId: string
-  title: string
-  description: string
-  date: string
+  id: string;
+  catboxId: string;
+  title: string;
+  description: string;
+  date: string;
 }
 
 // Videos definidos desde código - usando Catbox
@@ -48,7 +48,7 @@ const videos: Video[] = [
     description: "Nuestros pasos sincronizados, nuestro ritmo perfecto",
     date: "Paseo inolvidable",
   },
-]
+];
 
 // Video dedicado definido desde código
 const dedicatedVideo = {
@@ -56,17 +56,19 @@ const dedicatedVideo = {
   title: "Mi Video Para Ti",
   description:
     "Un mensaje desde el corazón que quería compartir contigo. Este video lo hice pensando en todos los momentos que vivimos juntos y en lo especial que eres para mí.",
-}
+};
 
 export default function VideosPage() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [videoBlobs, setVideoBlobs] = useState<{ [key: string]: string }>({})
-  const [loadingVideos, setLoadingVideos] = useState<{ [key: string]: boolean }>({})
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [videoBlobs, setVideoBlobs] = useState<{ [key: string]: string }>({});
+  const [loadingVideos, setLoadingVideos] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   // Función para obtener video desde Catbox (permite hotlinks)
   const getVideoBlob = async (catboxId: string): Promise<string> => {
     if (videoBlobs[catboxId]) {
-      return videoBlobs[catboxId]
+      return videoBlobs[catboxId];
     }
 
     if (loadingVideos[catboxId]) {
@@ -74,14 +76,14 @@ export default function VideosPage() {
       return new Promise((resolve) => {
         const checkInterval = setInterval(() => {
           if (videoBlobs[catboxId]) {
-            clearInterval(checkInterval)
-            resolve(videoBlobs[catboxId])
+            clearInterval(checkInterval);
+            resolve(videoBlobs[catboxId]);
           }
-        }, 100)
-      })
+        }, 100);
+      });
     }
 
-    setLoadingVideos((prev) => ({ ...prev, [catboxId]: true }))
+    setLoadingVideos((prev) => ({ ...prev, [catboxId]: true }));
 
     try {
       // Catbox permite hotlinks directos, pero usamos fetch para consistencia
@@ -90,66 +92,66 @@ export default function VideosPage() {
         headers: {
           Accept: "video/*",
         },
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const blob = await response.blob()
-      const blobUrl = URL.createObjectURL(blob)
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
 
-      setVideoBlobs((prev) => ({ ...prev, [catboxId]: blobUrl }))
-      setLoadingVideos((prev) => ({ ...prev, [catboxId]: false }))
+      setVideoBlobs((prev) => ({ ...prev, [catboxId]: blobUrl }));
+      setLoadingVideos((prev) => ({ ...prev, [catboxId]: false }));
 
-      return blobUrl
+      return blobUrl;
     } catch (error) {
-      console.error(`Error loading video ${catboxId}:`, error)
-      setLoadingVideos((prev) => ({ ...prev, [catboxId]: false }))
+      console.error(`Error loading video ${catboxId}:`, error);
+      setLoadingVideos((prev) => ({ ...prev, [catboxId]: false }));
 
       // Fallback: usar URL directa de Catbox (permite hotlinks)
-      const directUrl = `https://files.catbox.moe/${catboxId}`
-      setVideoBlobs((prev) => ({ ...prev, [catboxId]: directUrl }))
-      return directUrl
+      const directUrl = `https://files.catbox.moe/${catboxId}`;
+      setVideoBlobs((prev) => ({ ...prev, [catboxId]: directUrl }));
+      return directUrl;
     }
-  }
+  };
 
   // Precargar videos
   useEffect(() => {
     const preloadVideos = async () => {
       // Precargar video actual
-      await getVideoBlob(videos[currentIndex].catboxId)
+      await getVideoBlob(videos[currentIndex].catboxId);
 
       // Precargar siguiente video
-      const nextIndex = (currentIndex + 1) % videos.length
+      const nextIndex = (currentIndex + 1) % videos.length;
       setTimeout(() => {
-        getVideoBlob(videos[nextIndex].catboxId)
-      }, 1000)
-    }
+        getVideoBlob(videos[nextIndex].catboxId);
+      }, 1000);
+    };
 
-    preloadVideos()
-  }, [currentIndex])
+    preloadVideos();
+  }, [currentIndex]);
 
   // Precargar video dedicado
   useEffect(() => {
     setTimeout(() => {
-      getVideoBlob(dedicatedVideo.catboxId)
-    }, 2000)
-  }, [])
+      getVideoBlob(dedicatedVideo.catboxId);
+    }, 2000);
+  }, []);
 
   const nextVideo = () => {
-    setCurrentIndex((prev) => (prev + 1) % videos.length)
-  }
+    setCurrentIndex((prev) => (prev + 1) % videos.length);
+  };
 
   const prevVideo = () => {
-    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length)
-  }
+    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+  };
 
   const goToVideo = (index: number) => {
-    setCurrentIndex(index)
-  }
+    setCurrentIndex(index);
+  };
 
-  const currentVideo = videos[currentIndex]
+  const currentVideo = videos[currentIndex];
 
   return (
     <div className="min-h-screen relative">
@@ -164,14 +166,17 @@ export default function VideosPage() {
             Videos y Algo Mas
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            {videos.length} momentos en movimiento que capturan tu esencia y alegría
+            {videos.length} momentos en movimiento que capturan tu esencia y
+            alegría
           </p>
         </div>
 
         {/* Video Carousel - Tamaño reducido */}
         <div className="relative max-w-4xl mx-auto mb-16">
           <div className="text-center mb-6">
-            <h2 className="font-dancing text-2xl font-bold text-slate-700 mb-2">Recuerdos grabados</h2>
+            <h2 className="font-dancing text-2xl font-bold text-slate-700 mb-2">
+              Recuerdos grabados
+            </h2>
             <p className="text-slate-600">Momentos capturados de tu esencia</p>
           </div>
 
@@ -182,18 +187,23 @@ export default function VideosPage() {
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-pink-100 to-blue-100">
                   <div className="flex flex-col items-center space-y-4">
                     <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin"></div>
-                    <p className="text-pink-600 font-medium">Cargando video...</p>
+                    <p className="text-pink-600 font-medium">
+                      Cargando video...
+                    </p>
                   </div>
                 </div>
               ) : (
                 <video
-                  src={videoBlobs[currentVideo.catboxId] || `https://files.catbox.moe/${currentVideo.catboxId}`}
+                  src={
+                    videoBlobs[currentVideo.catboxId] ||
+                    `https://files.catbox.moe/${currentVideo.catboxId}`
+                  }
                   className="w-full h-full object-cover"
                   controls
                   preload="metadata"
                   title={currentVideo.title}
                   onError={(e) => {
-                    console.error("Error loading video:", e)
+                    console.error("Error loading video:", e);
                   }}
                 >
                   Tu navegador no soporta el elemento video.
@@ -224,11 +234,17 @@ export default function VideosPage() {
             {/* Video Info */}
             <div className="p-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-dancing text-xl font-semibold text-slate-700">{currentVideo.title}</h3>
+                <h3 className="font-dancing text-xl font-semibold text-slate-700">
+                  {currentVideo.title}
+                </h3>
                 <Play className="h-5 w-5 text-pink-400 opacity-60" />
               </div>
-              <p className="text-sm text-pink-600 font-medium mb-2">{currentVideo.date}</p>
-              <p className="text-slate-600 leading-relaxed text-sm">{currentVideo.description}</p>
+              <p className="text-sm text-pink-600 font-medium mb-2">
+                {currentVideo.date}
+              </p>
+              <p className="text-slate-600 leading-relaxed text-sm">
+                {currentVideo.description}
+              </p>
             </div>
           </div>
 
@@ -244,7 +260,9 @@ export default function VideosPage() {
               >
                 <div
                   className={`w-24 h-16 rounded-lg overflow-hidden border-2 ${
-                    index === currentIndex ? "border-pink-400 shadow-lg" : "border-transparent hover:border-pink-300"
+                    index === currentIndex
+                      ? "border-pink-400 shadow-lg"
+                      : "border-transparent hover:border-pink-300"
                   }`}
                 >
                   {loadingVideos[video.catboxId] ? (
@@ -268,20 +286,31 @@ export default function VideosPage() {
                 key={index}
                 onClick={() => goToVideo(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? "bg-pink-500 scale-125" : "bg-pink-200 hover:bg-pink-300"
+                  index === currentIndex
+                    ? "bg-pink-500 scale-125"
+                    : "bg-pink-200 hover:bg-pink-300"
                 }`}
               />
             ))}
+          </div>
+          {/* Navigation Instructions */}
+          <div className="text-center mt-12">
+            <p className="text-slate-500 text-sm">
+              Usa las flechas o haz clic en las miniaturas para navegar por el
+              carrusel • {videos.length} videos en total
+            </p>
           </div>
         </div>
 
         {/* Dedicated Video Section - Video individual */}
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="font-dancing text-3xl font-bold text-slate-700 mb-4">Video Dedicado Para Ti</h2>
+            <h2 className="font-dancing text-3xl font-bold text-slate-700 mb-4">
+              Video Dedicado Para Ti
+            </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Un mensaje especial que quiero compartir contigo. Este video lo hice pensando en todos nuestros momentos
-              juntos.
+              Un mensaje especial que quiero compartir contigo. Este video lo
+              hice pensando en todos nuestros momentos juntos.
             </p>
           </div>
 
@@ -291,19 +320,24 @@ export default function VideosPage() {
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
                   <div className="flex flex-col items-center space-y-4">
                     <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
-                    <p className="text-purple-600 font-medium text-lg">Cargando video dedicado...</p>
+                    <p className="text-purple-600 font-medium text-lg">
+                      Cargando video dedicado...
+                    </p>
                   </div>
                 </div>
               ) : (
                 <video
-                  src={videoBlobs[dedicatedVideo.catboxId] || `https://files.catbox.moe/${dedicatedVideo.catboxId}`}
+                  src={
+                    videoBlobs[dedicatedVideo.catboxId] ||
+                    `https://files.catbox.moe/${dedicatedVideo.catboxId}`
+                  }
                   className="w-full h-full object-cover"
                   controls
                   preload="metadata"
                   title="Video Dedicado"
                   poster="/placeholder.svg?height=400&width=800"
                   onError={(e) => {
-                    console.error("Error loading dedicated video:", e)
+                    console.error("Error loading dedicated video:", e);
                   }}
                 >
                   Tu navegador no soporta el elemento video.
@@ -318,7 +352,9 @@ export default function VideosPage() {
                   {dedicatedVideo.title}
                 </h3>
               </div>
-              <p className="text-slate-600 leading-relaxed max-w-2xl mx-auto">{dedicatedVideo.description}</p>
+              <p className="text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                {dedicatedVideo.description}
+              </p>
 
               {/* Decorative elements */}
               <div className="flex justify-center items-center space-x-4 mt-6">
@@ -329,14 +365,7 @@ export default function VideosPage() {
             </div>
           </div>
         </div>
-
-        {/* Navigation Instructions */}
-        <div className="text-center mt-12">
-          <p className="text-slate-500 text-sm">
-            Usa las flechas o haz clic en las miniaturas para navegar por el carrusel • {videos.length} videos en total
-          </p>
-        </div>
       </div>
     </div>
-  )
+  );
 }
