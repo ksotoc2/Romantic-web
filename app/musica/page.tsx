@@ -546,7 +546,7 @@ export default function MusicaPage() {
           <br />
           <div className="text-center mt-12 lg:mt-0">
             <p className="text-slate-500 text-sm">
-              Haz clic en cualquier canción para reproducirla automáticamente •
+              Haz clic en cualquier canción y usa el reproductor •
               Toca
               <Info className="h-4 w-4 inline mx-1" /> para ver el significado
             </p>
