@@ -477,18 +477,7 @@ export default function FotosPage() {
             Usa las flechas o haz clic en las miniaturas para navegar •{" "}
             {photos.length} fotos en total
           </p>
-          <p className="text-slate-400 text-xs mt-2">
-            💡 Para usar tus fotos: Sube a{" "}
-            <a
-              href="https://catbox.moe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-purple-500 hover:underline"
-            >
-              catbox.moe
-            </a>{" "}
-            y reemplaza los IDs en el código
-          </p>
+          
         </div>
       </div>
     </div>
