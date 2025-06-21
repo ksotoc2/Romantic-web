@@ -161,29 +161,17 @@ export default function VideosPage() {
             <Play className="h-16 w-16 text-pink-500 mx-auto mb-6 relative z-10 animate-bounce" />
           </div>
           <h1 className="font-dancing text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent mb-6">
-            Tus Videos
+            Videos y Algo Mas
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             {videos.length} momentos en movimiento que capturan tu esencia y alegría
-          </p>
-          <p className="text-slate-400 text-xs mt-2">
-            💡 Para usar tus videos: Sube a{" "}
-            <a
-              href="https://catbox.moe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-pink-500 hover:underline"
-            >
-              catbox.moe
-            </a>{" "}
-            y reemplaza los IDs en el código
           </p>
         </div>
 
         {/* Video Carousel - Tamaño reducido */}
         <div className="relative max-w-4xl mx-auto mb-16">
           <div className="text-center mb-6">
-            <h2 className="font-dancing text-2xl font-bold text-slate-700 mb-2">Recuerdos en Movimiento</h2>
+            <h2 className="font-dancing text-2xl font-bold text-slate-700 mb-2">Recuerdos grabados</h2>
             <p className="text-slate-600">Momentos capturados de tu esencia</p>
           </div>
 
