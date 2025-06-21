@@ -1,25 +1,34 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useRef, useEffect } from "react"
-import { Play, Pause, SkipBack, SkipForward, Volume2, Heart, Info, Clock } from "lucide-react"
+import type React from "react";
+import { useState, useRef, useEffect } from "react";
+import {
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  Heart,
+  Info,
+  Clock,
+} from "lucide-react";
 
 interface Song {
-  id: string
-  title: string
-  artist: string
-  catboxId: string
-  meaning: string
-  duration: string
+  id: string;
+  title: string;
+  artist: string;
+  catboxId: string;
+  meaning: string;
+  duration: string;
 }
 
 interface ColorTheme {
-  primary: string
-  secondary: string
-  accent: string
-  gradient: string
-  shadow: string
-  name: string
+  primary: string;
+  secondary: string;
+  accent: string;
+  gradient: string;
+  shadow: string;
+  name: string;
 }
 
 const colorThemes: ColorTheme[] = [
@@ -79,74 +88,186 @@ const colorThemes: ColorTheme[] = [
     shadow: "red-300/50",
     name: "Rojo",
   },
-]
+];
 
 const songs: Song[] = [
   {
     id: "1",
-    title: "Perfect",
-    artist: "Ed Sheeran",
-    catboxId: "dm2eig.mp3", // Reemplaza con tu ID real de Catbox
+    title: "Cama y mesa",
+    artist: "Roberto Carlos",
+    catboxId: "j2cf51.mp3",
     meaning:
-      "Esta canción me recuerda a cuando bailamos por primera vez. Cada palabra describe lo que sentía por ti en ese momento.",
-    duration: "4:23",
+      "Primera canción que te dediqué. En ella descubrí cómo se siente imaginar una vida contigo. No solo eras amor, eras hogar, rutina, y ternura. Fuiste la persona con quien soñé compartir los pequeños momentos del día, desde el desayuno hasta el silencio de las noches. Fue el inicio de todo lo que creí que vendría.",
+    duration: "3:15",
   },
   {
     id: "2",
-    title: "Ojitos mentirosos",
-    artist: "John Legend",
-    catboxId: "ldam4c.mp3",
+    title: "Poeta enamorado",
+    artist: "Grupo Uno",
+    catboxId: "41if18.mp3",
     meaning:
-      "Tu canción favorita. Siempre la cantabas cuando estabas feliz, y tu voz era lo más hermoso que había escuchado.",
-    duration: "4:29",
+      "Primera canción que me dedicaste, y desde entonces no puedo escucharla sin pensar en cómo me veías. Me sentí visto, admirado, amado de una forma distinta. Tu forma de dedicarme esa canción me hizo creer que el amor también podía ser poesía, arte, dulzura. Me encanta porque ahí está tu esencia.",
+    duration: "3:26",
   },
   {
     id: "3",
-    title: "Thinking Out Loud",
-    artist: "Ed Sheeran",
-    catboxId: "ejemplo3.mp3",
+    title: "Ojos color sol",
+    artist: "Calle 13, Silvio Rodríguez",
+    catboxId: "xmfs22.mp3",
     meaning:
-      "La canción que sonaba en el auto cuando me dijiste que me querías. Ese momento quedó grabado para siempre.",
-    duration: "4:41",
+      "Esta canción me hace pensar en cómo era todo cuando estabas: más cálido, más claro, más vivo. Tus ojos tenían esa luz que transformaba mis días grises. Amar contigo fue como vivir bajo un sol que no quemaba, que sanaba. Una belleza serena, como la tuya, que me enseñó a mirar el mundo distinto.",
+    duration: "3:34",
   },
   {
     id: "4",
-    title: "A Thousand Years",
-    artist: "Christina Perri",
-    catboxId: "ejemplo4.mp3",
-    meaning: "Decías que así era como te sentías conmigo, como si hubieras esperado mil años para encontrarme.",
-    duration: "4:45",
+    title: "Historia de un Amor",
+    artist: "Eydie Gormé, Los Panchos",
+    catboxId: "jggmjm.mp3",
+    meaning:
+      "Nuestra historia no fue perfecta, pero fue intensa y verdadera. Esta canción me recuerda que el amor no siempre tiene un final feliz, pero sí puede dejar huellas imborrables. Me duele, pero me honra haberla vivido contigo. Porque aunque no estemos, lo que sentimos fue real.",
+    duration: "2:33",
   },
   {
     id: "5",
-    title: "Make You Feel My Love",
-    artist: "Adele",
-    catboxId: "ejemplo5.mp3",
-    meaning: "La última canción que escuchamos juntos. Ahora cada vez que la oigo, siento que estás cerca.",
-    duration: "3:32",
+    title: "Piel canela",
+    artist: "Los Panchos, Eydie Gormé",
+    catboxId: "uqxfyi.mp3",
+    meaning:
+      "Cada vez que escucho esta canción, me acuerdo de tu risa, de tu piel y de tu voz. Es una canción que celebra lo bello de una mujer, y tú para mí siempre fuiste eso: belleza que desbordaba por dentro y por fuera. No necesito más que el recuerdo de tu alegría.",
+    duration: "2:17",
   },
-]
+  {
+    id: "6",
+    title: "Nosotros",
+    artist: "Eydie Gormé, Los Panchos",
+    catboxId: "awrygh.mp3",
+    meaning:
+      "Una despedida con amor. No por falta de sentimientos, sino por razones que a veces la vida impone. Esta canción refleja la nobleza con la que quiero soltar lo nuestro: sin reproches, solo con gratitud. Porque aunque ya no sea, fue hermoso mientras duró.",
+    duration: "2:44",
+  },
+  {
+    id: "7",
+    title: "Contigo",
+    artist: "Los Panchos",
+    catboxId: "gmdi4x.mp3",
+    meaning:
+      "Esta canción habla de lo esencial, y contigo todo lo simple cobraba un valor inmenso. No necesitaba más que tu compañía. Estar contigo bastaba para que todo tuviera sentido. Y aunque ya no estés, sigo creyendo en la verdad de esas palabras.",
+    duration: "2:56",
+  },
+  {
+    id: "8",
+    title: "Sarà perché ti amo",
+    artist: "Ricchi e Poveri",
+    catboxId: "xoidtq.mp3",
+    meaning:
+      "Algo mágico que causaste dentro de mí. Es una canción que vibra con la emoción de lo inesperado, y eso fuiste tú: un terremoto en mi vida, un antes y un después. Me hiciste sentir cosas que no sabía que podían sentirse tan de golpe, tan profundamente.",
+    duration: "3:03",
+  },
+  {
+    id: "9",
+    title: "Alma dinamita",
+    artist: "Wos",
+    catboxId: "bx1gtx.mp3",
+    meaning:
+      "Siempre fuiste intensidad, explosión, vida. Esta canción me recuerda tu energía única, tu forma de romper la rutina con tu presencia. Amarte fue como abrazar una tormenta: peligroso, pero imposible de soltar. Tu alma sigue siendo dinamita en mis recuerdos.",
+    duration: "2:53",
+  },
+  {
+    id: "10",
+    title: "Alguien como tú",
+    artist: "Josean Log",
+    catboxId: "6wgajc.mp3",
+    meaning:
+      "Pensarte era inevitable. Siempre creí que nadie más se parecería a ti, y quizá siga creyéndolo. Esta canción me hace aceptar que, aunque el tiempo pase, hay personas que dejan huellas que no desaparecen, solo se transforman. Fuiste esa persona.",
+    duration: "3:47",
+  },
+  {
+    id: "11",
+    title: "Cuando estás vos",
+    artist: "Milo J",
+    catboxId: "8piw2g.mp3",
+    meaning:
+      "Tu presencia cambiaba todo. El mundo era distinto cuando estabas, incluso las cosas simples como una charla o un abrazo. Esta canción es la sensación de querer detener el tiempo porque tú estabas ahí. Ahora que no estás, también cambia todo.",
+    duration: "2:51",
+  },
+  {
+    id: "12",
+    title: "Sol",
+    artist: "Willian",
+    catboxId: "k5dwk0.mp3",
+    meaning:
+      "Fuiste luz cuando todo era gris. Esta canción me recuerda que trajiste claridad y color cuando lo necesitaba sin saberlo. Me enseñaste a mirar el mundo con otra luz, con más ternura. Seguirás siendo ese sol, incluso si ya no me alumbra de cerca.",
+    duration: "2:19",
+  },
+  {
+    id: "13",
+    title: "En otra vida",
+    artist: "Yami Safdie, Lasso",
+    catboxId: "cd02x3.mp3",
+    meaning:
+      "Quizás allá, en otro tiempo, lo nuestro podría ser distinto. Esta canción es un suspiro que no se resigna del todo, que imagina una versión de nosotros donde todo encaja. Si no era ahora, quizás en otra vida. Porque el amor no siempre muere; a veces, solo se guarda para después.",
+    duration: "2:36",
+  },
+  {
+    id: "14",
+    title: "DtMF",
+    artist: "Bad Bunny",
+    catboxId: "t8x2xf.mp3",
+    meaning:
+      "Una canción que representa esa etapa intensa, pasional, sin filtros. Nuestra historia también tuvo eso: deseo crudo, noches largas, instinto. Esta canción es testigo de lo físico que también fue parte del amor. Una parte honesta y sin adornos.",
+    duration: "4:00",
+  },
+  {
+    id: "15",
+    title: "La noche más linda",
+    artist: "Adalberto Santiago",
+    catboxId: "vkuvtj.mp3",
+    meaning:
+      "Hubo momentos contigo que parecen irreales de lo bellos que fueron. Esta canción es una celebración de esas noches que no se olvidan, que te marcan para siempre. Contigo viví algunas de las noches más lindas de mi vida, y eso no se borra.",
+    duration: "5:41",
+  },
+  {
+    id: "16",
+    title: "Te quiero",
+    artist: "Hombres G",
+    catboxId: "hd2ay1.mp3",
+    meaning:
+      "Una verdad sencilla, casi infantil, pero eterna: te quise. Sin complicaciones, sin condiciones. Esta canción lo dice como yo a veces no supe decirlo. Puede que estemos cerrando este ciclo, pero no quiero negar lo más básico: que te quise de verdad.",
+    duration: "4:03",
+  },
+  {
+    id: "17",
+    title: "Te juro que te amo",
+    artist: "Los Terrícolas",
+    catboxId: "sece5m.mp3",
+    meaning:
+      "Amarte fue cierto, profundo, doloroso y hermoso. Esta canción es esa promesa que hicimos sin decirla: que lo nuestro fue sincero. Me quedo con la certeza de que no fue un juego, ni un error. Fue amor, aunque no haya durado.",
+    duration: "3:59",
+  },
+];
 
 export default function MusicaPage() {
-  const [currentSong, setCurrentSong] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [duration, setDuration] = useState(0)
-  const [volume, setVolume] = useState(0.7)
-  const [showMeaning, setShowMeaning] = useState<string | null>(null)
-  const [showTimeRemaining, setShowTimeRemaining] = useState(false)
-  const [currentThemeIndex, setCurrentThemeIndex] = useState(0)
-  const [audioBlobs, setAudioBlobs] = useState<{ [key: string]: string }>({})
-  const [loadingAudio, setLoadingAudio] = useState<{ [key: string]: boolean }>({})
-  const [isLoading, setIsLoading] = useState(false)
-  const audioRef = useRef<HTMLAudioElement>(null)
+  const [currentSong, setCurrentSong] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(0.7);
+  const [showMeaning, setShowMeaning] = useState<string | null>(null);
+  const [showTimeRemaining, setShowTimeRemaining] = useState(false);
+  const [currentThemeIndex, setCurrentThemeIndex] = useState(0);
+  const [audioBlobs, setAudioBlobs] = useState<{ [key: string]: string }>({});
+  const [loadingAudio, setLoadingAudio] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  const currentColors = colorThemes[currentThemeIndex]
+  const currentColors = colorThemes[currentThemeIndex];
 
   // Función para obtener audio desde Catbox (permite hotlinks)
   const getAudioBlob = async (catboxId: string): Promise<string> => {
     if (audioBlobs[catboxId]) {
-      return audioBlobs[catboxId]
+      return audioBlobs[catboxId];
     }
 
     if (loadingAudio[catboxId]) {
@@ -154,14 +275,14 @@ export default function MusicaPage() {
       return new Promise((resolve) => {
         const checkInterval = setInterval(() => {
           if (audioBlobs[catboxId]) {
-            clearInterval(checkInterval)
-            resolve(audioBlobs[catboxId])
+            clearInterval(checkInterval);
+            resolve(audioBlobs[catboxId]);
           }
-        }, 100)
-      })
+        }, 100);
+      });
     }
 
-    setLoadingAudio((prev) => ({ ...prev, [catboxId]: true }))
+    setLoadingAudio((prev) => ({ ...prev, [catboxId]: true }));
 
     try {
       // Catbox permite hotlinks directos, pero usamos fetch para consistencia
@@ -170,224 +291,230 @@ export default function MusicaPage() {
         headers: {
           Accept: "audio/*",
         },
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const blob = await response.blob()
-      const blobUrl = URL.createObjectURL(blob)
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
 
-      setAudioBlobs((prev) => ({ ...prev, [catboxId]: blobUrl }))
-      setLoadingAudio((prev) => ({ ...prev, [catboxId]: false }))
+      setAudioBlobs((prev) => ({ ...prev, [catboxId]: blobUrl }));
+      setLoadingAudio((prev) => ({ ...prev, [catboxId]: false }));
 
-      return blobUrl
+      return blobUrl;
     } catch (error) {
-      console.error(`Error loading audio ${catboxId}:`, error)
-      setLoadingAudio((prev) => ({ ...prev, [catboxId]: false }))
+      console.error(`Error loading audio ${catboxId}:`, error);
+      setLoadingAudio((prev) => ({ ...prev, [catboxId]: false }));
 
       // Fallback: usar URL directa de Catbox (permite hotlinks)
-      const directUrl = `https://files.catbox.moe/${catboxId}`
-      setAudioBlobs((prev) => ({ ...prev, [catboxId]: directUrl }))
-      return directUrl
+      const directUrl = `https://files.catbox.moe/${catboxId}`;
+      setAudioBlobs((prev) => ({ ...prev, [catboxId]: directUrl }));
+      return directUrl;
     }
-  }
+  };
 
   // Precargar audio de la canción actual y las siguientes
   useEffect(() => {
     const preloadAudio = async () => {
-      const currentSongData = songs[currentSong]
-      const nextSongData = songs[(currentSong + 1) % songs.length]
+      const currentSongData = songs[currentSong];
+      const nextSongData = songs[(currentSong + 1) % songs.length];
 
       // Precargar canción actual
-      await getAudioBlob(currentSongData.catboxId)
+      await getAudioBlob(currentSongData.catboxId);
 
       // Precargar siguiente canción
       setTimeout(() => {
-        getAudioBlob(nextSongData.catboxId)
-      }, 1000)
-    }
+        getAudioBlob(nextSongData.catboxId);
+      }, 1000);
+    };
 
-    preloadAudio()
-  }, [currentSong])
+    preloadAudio();
+  }, [currentSong]);
 
   useEffect(() => {
     const colorInterval = setInterval(() => {
-      setCurrentThemeIndex((prev) => (prev + 1) % colorThemes.length)
-    }, 8000)
-    return () => clearInterval(colorInterval)
-  }, [])
+      setCurrentThemeIndex((prev) => (prev + 1) % colorThemes.length);
+    }, 8000);
+    return () => clearInterval(colorInterval);
+  }, []);
 
   // Configurar audio cuando cambie la canción
   useEffect(() => {
     const setupAudio = async () => {
-      const audio = audioRef.current
-      if (!audio) return
+      const audio = audioRef.current;
+      if (!audio) return;
 
-      const currentSongData = songs[currentSong]
+      const currentSongData = songs[currentSong];
 
       // Pausar audio actual y limpiar estado
-      audio.pause()
-      setIsPlaying(false)
-      setIsLoading(true)
-      setCurrentTime(0)
-      setDuration(0)
+      audio.pause();
+      setIsPlaying(false);
+      setIsLoading(true);
+      setCurrentTime(0);
+      setDuration(0);
 
       try {
         // Obtener blob URL desde Catbox
-        const blobUrl = await getAudioBlob(currentSongData.catboxId)
+        const blobUrl = await getAudioBlob(currentSongData.catboxId);
 
         // Configurar nueva fuente
-        audio.src = blobUrl
-        audio.currentTime = 0
+        audio.src = blobUrl;
+        audio.currentTime = 0;
 
         // Configurar event listeners
         const handleCanPlay = () => {
-          setIsLoading(false)
+          setIsLoading(false);
           // Aplicar volumen cuando esté listo
-          audio.volume = volume
-          console.log("Audio listo, volumen aplicado:", audio.volume)
-        }
+          audio.volume = volume;
+          console.log("Audio listo, volumen aplicado:", audio.volume);
+        };
 
         const handleLoadedMetadata = () => {
-          setDuration(audio.duration || 0)
+          setDuration(audio.duration || 0);
           // Aplicar volumen cuando se carguen los metadatos
-          audio.volume = volume
-          console.log("Metadatos cargados, volumen aplicado:", audio.volume)
-        }
+          audio.volume = volume;
+          console.log("Metadatos cargados, volumen aplicado:", audio.volume);
+        };
 
         const handleTimeUpdate = () => {
-          setCurrentTime(audio.currentTime)
-        }
+          setCurrentTime(audio.currentTime);
+        };
 
         const handleEnded = () => {
-          setIsPlaying(false)
-          nextSong()
-        }
+          setIsPlaying(false);
+          nextSong();
+        };
 
         const handlePlay = () => {
-          console.log("Audio event: play")
-          setIsPlaying(true)
-        }
+          console.log("Audio event: play");
+          setIsPlaying(true);
+        };
 
         const handlePause = () => {
-          console.log("Audio event: pause")
-          setIsPlaying(false)
-        }
+          console.log("Audio event: pause");
+          setIsPlaying(false);
+        };
 
         const handleError = (e: Event) => {
-          console.error("Audio error:", e)
-          setIsLoading(false)
-        }
+          console.error("Audio error:", e);
+          setIsLoading(false);
+        };
 
         // Limpiar listeners anteriores
-        audio.removeEventListener("canplay", handleCanPlay)
-        audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
-        audio.removeEventListener("timeupdate", handleTimeUpdate)
-        audio.removeEventListener("ended", handleEnded)
-        audio.removeEventListener("play", handlePlay)
-        audio.removeEventListener("pause", handlePause)
-        audio.removeEventListener("error", handleError)
+        audio.removeEventListener("canplay", handleCanPlay);
+        audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+        audio.removeEventListener("timeupdate", handleTimeUpdate);
+        audio.removeEventListener("ended", handleEnded);
+        audio.removeEventListener("play", handlePlay);
+        audio.removeEventListener("pause", handlePause);
+        audio.removeEventListener("error", handleError);
 
         // Agregar nuevos listeners
-        audio.addEventListener("canplay", handleCanPlay)
-        audio.addEventListener("loadedmetadata", handleLoadedMetadata)
-        audio.addEventListener("timeupdate", handleTimeUpdate)
-        audio.addEventListener("ended", handleEnded)
-        audio.addEventListener("play", handlePlay)
-        audio.addEventListener("pause", handlePause)
-        audio.addEventListener("error", handleError)
+        audio.addEventListener("canplay", handleCanPlay);
+        audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+        audio.addEventListener("timeupdate", handleTimeUpdate);
+        audio.addEventListener("ended", handleEnded);
+        audio.addEventListener("play", handlePlay);
+        audio.addEventListener("pause", handlePause);
+        audio.addEventListener("error", handleError);
 
         // Cargar audio
-        audio.load()
+        audio.load();
       } catch (error) {
-        console.error("Error setting up audio:", error)
-        setIsLoading(false)
+        console.error("Error setting up audio:", error);
+        setIsLoading(false);
       }
-    }
+    };
 
-    setupAudio()
-  }, [currentSong])
+    setupAudio();
+  }, [currentSong]);
 
   // Aplicar volumen cuando cambie
   useEffect(() => {
-    const audio = audioRef.current
+    const audio = audioRef.current;
     if (audio && !isLoading) {
-      audio.volume = volume
-      console.log("Volumen cambiado a:", volume, "Audio volume:", audio.volume)
+      audio.volume = volume;
+      console.log("Volumen cambiado a:", volume, "Audio volume:", audio.volume);
     }
-  }, [volume, isLoading])
+  }, [volume, isLoading]);
 
   const togglePlay = async () => {
-    const audio = audioRef.current
+    const audio = audioRef.current;
     if (!audio || isLoading) {
-      console.log("Audio no disponible o cargando")
-      return
+      console.log("Audio no disponible o cargando");
+      return;
     }
 
-    console.log("Toggle play - isPlaying:", isPlaying, "audio.paused:", audio.paused)
+    console.log(
+      "Toggle play - isPlaying:",
+      isPlaying,
+      "audio.paused:",
+      audio.paused
+    );
 
     try {
       if (isPlaying) {
-        audio.pause()
-        console.log("Audio pausado")
+        audio.pause();
+        console.log("Audio pausado");
       } else {
         // Asegurar volumen antes de reproducir
-        audio.volume = volume
-        console.log("Intentando reproducir con volumen:", volume)
-        await audio.play()
-        console.log("Audio reproduciendo")
+        audio.volume = volume;
+        console.log("Intentando reproducir con volumen:", volume);
+        await audio.play();
+        console.log("Audio reproduciendo");
       }
     } catch (error) {
-      console.error("Error toggling play:", error)
-      setIsPlaying(false)
+      console.error("Error toggling play:", error);
+      setIsPlaying(false);
     }
-  }
+  };
 
   const nextSong = () => {
-    setCurrentSong((prev) => (prev + 1) % songs.length)
-  }
+    setCurrentSong((prev) => (prev + 1) % songs.length);
+  };
 
   const prevSong = () => {
-    setCurrentSong((prev) => (prev - 1 + songs.length) % songs.length)
-  }
+    setCurrentSong((prev) => (prev - 1 + songs.length) % songs.length);
+  };
 
   const selectSong = (index: number) => {
     if (index === currentSong && isPlaying) {
-      return // No permitir pausar desde la lista
+      return; // No permitir pausar desde la lista
     }
-    setCurrentSong(index)
-  }
+    setCurrentSong(index);
+  };
 
   const formatTime = (time: number) => {
-    if (!time || !isFinite(time)) return "0:00"
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`
-  }
+    if (!time || !isFinite(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
 
-  const getRemainingTime = () => Math.max(0, duration - currentTime)
+  const getRemainingTime = () => Math.max(0, duration - currentTime);
 
-  const getProgressPercentage = () => (duration ? (currentTime / duration) * 100 : 0)
+  const getProgressPercentage = () =>
+    duration ? (currentTime / duration) * 100 : 0;
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const audio = audioRef.current
-    if (!audio || !duration || isLoading) return
+    const audio = audioRef.current;
+    if (!audio || !duration || isLoading) return;
 
-    const rect = e.currentTarget.getBoundingClientRect()
-    const percent = (e.clientX - rect.left) / rect.width
-    const newTime = percent * duration
-    audio.currentTime = newTime
-  }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    const newTime = percent * duration;
+    audio.currentTime = newTime;
+  };
 
   const toggleMeaning = (songId: string) => {
-    setShowMeaning(showMeaning === songId ? null : songId)
-  }
+    setShowMeaning(showMeaning === songId ? null : songId);
+  };
 
   const toggleTimeDisplay = () => {
-    setShowTimeRemaining(!showTimeRemaining)
-  }
+    setShowTimeRemaining(!showTimeRemaining);
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -411,7 +538,9 @@ export default function MusicaPage() {
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-4">
             Las canciones que marcaron nuestros momentos juntos
           </p>
-          <div className={`text-sm text-${currentColors.accent} font-medium transition-all duration-1000`}>
+          <div
+            className={`text-sm text-${currentColors.accent} font-medium transition-all duration-1000`}
+          >
             Tema actual: {currentColors.name}
           </div>
         </div>
@@ -420,7 +549,9 @@ export default function MusicaPage() {
         <div className="hidden lg:grid lg:grid-cols-5 lg:gap-8">
           {/* Song List - Left Side - 3 columns */}
           <div className="col-span-3 space-y-4">
-            <h2 className="font-dancing text-3xl font-bold text-slate-700 text-center mb-8">Lista de Canciones</h2>
+            <h2 className="font-dancing text-3xl font-bold text-slate-700 text-center mb-8">
+              Lista de Canciones
+            </h2>
 
             <div className="max-h-[600px] overflow-y-auto pr-4 space-y-4">
               {songs.map((song, index) => (
@@ -439,8 +570,12 @@ export default function MusicaPage() {
                             className={`h-6 w-6 text-${currentColors.accent} mt-0.5 flex-shrink-0 fill-current transition-all duration-1000`}
                           />
                           <div>
-                            <h5 className="font-dancing text-xl font-semibold text-slate-700 mb-3">{song.title}</h5>
-                            <p className="text-slate-600 leading-relaxed">{song.meaning}</p>
+                            <h5 className="font-dancing text-xl font-semibold text-slate-700 mb-3">
+                              {song.title}
+                            </h5>
+                            <p className="text-slate-600 leading-relaxed">
+                              {song.meaning}
+                            </p>
                             <button
                               onClick={() => setShowMeaning(null)}
                               className={`mt-4 text-${currentColors.accent} hover:text-${currentColors.accent}/80 text-sm font-medium transition-all duration-1000`}
@@ -470,7 +605,8 @@ export default function MusicaPage() {
                               : "bg-slate-200"
                           }`}
                         >
-                          {(index === currentSong && isLoading) || loadingAudio[song.catboxId] ? (
+                          {(index === currentSong && isLoading) ||
+                          loadingAudio[song.catboxId] ? (
                             <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
                           ) : index === currentSong && isPlaying ? (
                             <Pause className="h-6 w-6 text-white" />
@@ -480,18 +616,24 @@ export default function MusicaPage() {
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-slate-700">{song.title}</h4>
-                          <p className="text-slate-500 text-sm">{song.artist}</p>
+                          <h4 className="font-semibold text-slate-700">
+                            {song.title}
+                          </h4>
+                          <p className="text-slate-500 text-sm">
+                            {song.artist}
+                          </p>
                         </div>
                       </div>
 
                       <div className="flex items-center space-x-3">
-                        <span className="text-slate-500 text-sm">{song.duration}</span>
+                        <span className="text-slate-500 text-sm">
+                          {song.duration}
+                        </span>
 
                         <button
                           onClick={(e) => {
-                            e.stopPropagation()
-                            toggleMeaning(song.id)
+                            e.stopPropagation();
+                            toggleMeaning(song.id);
                           }}
                           className={`p-2 text-slate-400 hover:text-${currentColors.accent} transition-colors duration-300 rounded-full hover:bg-${currentColors.accent}/10 group`}
                           title="Ver significado"
@@ -524,7 +666,9 @@ export default function MusicaPage() {
                       >
                         <div className="relative">
                           <Heart
-                            className={`h-16 w-16 text-white fill-current transition-all duration-300 ${isPlaying ? "animate-pulse" : ""}`}
+                            className={`h-16 w-16 text-white fill-current transition-all duration-300 ${
+                              isPlaying ? "animate-pulse" : ""
+                            }`}
                           />
                           {isPlaying && (
                             <div
@@ -550,7 +694,9 @@ export default function MusicaPage() {
                     <h3 className="font-dancing text-2xl font-bold text-slate-700 mb-1 animate-fade-in">
                       {songs[currentSong].title}
                     </h3>
-                    <p className="text-slate-600 text-base">{songs[currentSong].artist}</p>
+                    <p className="text-slate-600 text-base">
+                      {songs[currentSong].artist}
+                    </p>
                   </div>
 
                   {/* Time Counter Display */}
@@ -559,8 +705,12 @@ export default function MusicaPage() {
                       className={`bg-gradient-to-r ${currentColors.secondary} rounded-2xl p-4 shadow-inner border border-${currentColors.accent}/20 transition-all duration-1000`}
                     >
                       <div className="flex items-center justify-center space-x-3 mb-3">
-                        <Clock className={`h-5 w-5 text-${currentColors.accent} transition-all duration-1000`} />
-                        <h4 className="font-dancing text-lg font-semibold text-slate-700">Tiempo</h4>
+                        <Clock
+                          className={`h-5 w-5 text-${currentColors.accent} transition-all duration-1000`}
+                        />
+                        <h4 className="font-dancing text-lg font-semibold text-slate-700">
+                          Tiempo
+                        </h4>
                       </div>
 
                       <div className="text-center">
@@ -574,7 +724,9 @@ export default function MusicaPage() {
                             <div
                               className={`text-3xl font-bold font-mono text-${currentColors.accent} mb-1 tracking-wider transition-all duration-1000`}
                             >
-                              {showTimeRemaining ? `-${formatTime(getRemainingTime())}` : formatTime(currentTime)}
+                              {showTimeRemaining
+                                ? `-${formatTime(getRemainingTime())}`
+                                : formatTime(currentTime)}
                             </div>
                             <div className="text-xs text-slate-500 font-medium">
                               {showTimeRemaining ? "Restante" : "Transcurrido"}
@@ -583,7 +735,10 @@ export default function MusicaPage() {
                         </button>
 
                         <div className="mt-2 text-slate-500 text-xs">
-                          Total: <span className="font-semibold">{formatTime(duration)}</span>
+                          Total:{" "}
+                          <span className="font-semibold">
+                            {formatTime(duration)}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -613,8 +768,12 @@ export default function MusicaPage() {
                     </div>
 
                     <div className="flex justify-between text-xs text-slate-500 mt-2 font-mono">
-                      <span className="bg-white/50 px-2 py-1 rounded">{formatTime(currentTime)}</span>
-                      <span className="bg-white/50 px-2 py-1 rounded">{formatTime(duration)}</span>
+                      <span className="bg-white/50 px-2 py-1 rounded">
+                        {formatTime(currentTime)}
+                      </span>
+                      <span className="bg-white/50 px-2 py-1 rounded">
+                        {formatTime(duration)}
+                      </span>
                     </div>
                   </div>
 
@@ -663,7 +822,9 @@ export default function MusicaPage() {
                           max="1"
                           step="0.1"
                           value={volume}
-                          onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
+                          onChange={(e) =>
+                            setVolume(Number.parseFloat(e.target.value))
+                          }
                           className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer slider"
                         />
                       </div>
@@ -681,7 +842,9 @@ export default function MusicaPage() {
         {/* Mobile Layout */}
         <div className="lg:hidden">
           <div className="space-y-4">
-            <h2 className="font-dancing text-3xl font-bold text-slate-700 text-center mb-8">Lista de Canciones</h2>
+            <h2 className="font-dancing text-3xl font-bold text-slate-700 text-center mb-8">
+              Lista de Canciones
+            </h2>
             {songs.map((song, index) => (
               <div key={song.id} className="relative">
                 {showMeaning === song.id && (
@@ -697,8 +860,12 @@ export default function MusicaPage() {
                           className={`h-6 w-6 text-${currentColors.accent} mt-0.5 flex-shrink-0 fill-current transition-all duration-1000`}
                         />
                         <div>
-                          <h5 className="font-dancing text-xl font-semibold text-slate-700 mb-3">{song.title}</h5>
-                          <p className="text-slate-600 leading-relaxed">{song.meaning}</p>
+                          <h5 className="font-dancing text-xl font-semibold text-slate-700 mb-3">
+                            {song.title}
+                          </h5>
+                          <p className="text-slate-600 leading-relaxed">
+                            {song.meaning}
+                          </p>
                           <button
                             onClick={() => setShowMeaning(null)}
                             className={`mt-4 text-${currentColors.accent} hover:text-${currentColors.accent}/80 text-sm font-medium transition-all duration-1000`}
@@ -723,10 +890,13 @@ export default function MusicaPage() {
                     <div className="flex items-center space-x-4">
                       <div
                         className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-1000 ${
-                          index === currentSong ? `bg-gradient-to-r ${currentColors.primary}` : "bg-slate-200"
+                          index === currentSong
+                            ? `bg-gradient-to-r ${currentColors.primary}`
+                            : "bg-slate-200"
                         }`}
                       >
-                        {(index === currentSong && isLoading) || loadingAudio[song.catboxId] ? (
+                        {(index === currentSong && isLoading) ||
+                        loadingAudio[song.catboxId] ? (
                           <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         ) : index === currentSong && isPlaying ? (
                           <Pause className="h-6 w-6 text-white" />
@@ -736,17 +906,23 @@ export default function MusicaPage() {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-slate-700">{song.title}</h4>
-                        <p className="text-slate-500 text-sm truncate">{song.artist}</p>
+                        <h4 className="font-semibold text-slate-700">
+                          {song.title}
+                        </h4>
+                        <p className="text-slate-500 text-sm truncate">
+                          {song.artist}
+                        </p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-3">
-                      <span className="text-slate-500 text-sm">{song.duration}</span>
+                      <span className="text-slate-500 text-sm">
+                        {song.duration}
+                      </span>
                       <button
                         onClick={(e) => {
-                          e.stopPropagation()
-                          toggleMeaning(song.id)
+                          e.stopPropagation();
+                          toggleMeaning(song.id);
                         }}
                         className={`p-2 text-slate-400 hover:text-${currentColors.accent} transition-colors duration-1000 rounded-full hover:bg-${currentColors.accent}/10 group`}
                         title="Ver significado"
@@ -760,10 +936,11 @@ export default function MusicaPage() {
             ))}
           </div>
         </div>
-
+        <br />
         <div className="text-center mt-12 lg:mt-0">
           <p className="text-slate-500 text-sm">
-            Haz clic en cualquier canción para reproducirla automáticamente • Toca
+            Haz clic en cualquier canción para reproducirla automáticamente •
+            Toca
             <Info className="h-4 w-4 inline mx-1" /> para ver el significado
           </p>
         </div>
@@ -797,11 +974,19 @@ export default function MusicaPage() {
                 <div
                   className={`w-12 h-12 bg-gradient-to-br ${currentColors.primary} rounded-lg flex items-center justify-center shadow-lg flex-shrink-0 transition-all duration-1000`}
                 >
-                  <Heart className={`h-6 w-6 text-white fill-current ${isPlaying ? "animate-pulse" : ""}`} />
+                  <Heart
+                    className={`h-6 w-6 text-white fill-current ${
+                      isPlaying ? "animate-pulse" : ""
+                    }`}
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h4 className="font-semibold text-slate-700 truncate text-sm">{songs[currentSong].title}</h4>
-                  <p className="text-slate-500 text-xs truncate">{songs[currentSong].artist}</p>
+                  <h4 className="font-semibold text-slate-700 truncate text-sm">
+                    {songs[currentSong].title}
+                  </h4>
+                  <p className="text-slate-500 text-xs truncate">
+                    {songs[currentSong].artist}
+                  </p>
                 </div>
               </div>
 
@@ -845,13 +1030,18 @@ export default function MusicaPage() {
                   onClick={toggleTimeDisplay}
                   className={`font-mono bg-gradient-to-r ${currentColors.secondary} text-${currentColors.accent} px-2 py-1 rounded-full transition-all duration-1000 hover:shadow-md`}
                 >
-                  {showTimeRemaining ? `-${formatTime(getRemainingTime())}` : `+${formatTime(getRemainingTime())}`}
+                  {showTimeRemaining
+                    ? `-${formatTime(getRemainingTime())}`
+                    : `+${formatTime(getRemainingTime())}`}
                 </button>
                 <span className="font-mono">{formatTime(duration)}</span>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full h-2 bg-slate-200 rounded-full cursor-pointer mb-3" onClick={handleProgressClick}>
+              <div
+                className="w-full h-2 bg-slate-200 rounded-full cursor-pointer mb-3"
+                onClick={handleProgressClick}
+              >
                 <div
                   className={`h-full bg-gradient-to-r ${currentColors.primary} rounded-full transition-all duration-300 relative overflow-hidden`}
                   style={{ width: `${getProgressPercentage()}%` }}
@@ -870,11 +1060,15 @@ export default function MusicaPage() {
                     max="1"
                     step="0.1"
                     value={volume}
-                    onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
+                    onChange={(e) =>
+                      setVolume(Number.parseFloat(e.target.value))
+                    }
                     className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer slider"
                   />
                 </div>
-                <span className="text-xs text-slate-500 font-mono min-w-[2.5rem]">{Math.round(volume * 100)}%</span>
+                <span className="text-xs text-slate-500 font-mono min-w-[2.5rem]">
+                  {Math.round(volume * 100)}%
+                </span>
               </div>
             </div>
           </div>
@@ -884,5 +1078,5 @@ export default function MusicaPage() {
       {/* Audio Element */}
       <audio ref={audioRef} preload="metadata" />
     </div>
-  )
+  );
 }

@@ -25,12 +25,11 @@ const FloatingMessages = () => {
   const [messages, setMessages] = useState<FloatingMessage[]>([])
 
   const messageTemplates = [
-    "Siempre en mis recuerdos",
-    "Momentos inolvidables",
-    "Gracias por todo",
-    "Fuiste especial",
-    "Te deseo lo mejor",
-    "Que seas feliz"
+    "Recuerdos",
+    "Inolvidable",
+    "Te Quiero",
+    ":D",
+    "Se Feliz"
   ]
 
   useEffect(() => {
