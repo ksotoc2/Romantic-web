@@ -34,7 +34,7 @@ export default function HomePage() {
           </div>
 
           {/* Memory Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mt-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
             <Link href="/fotos" className="group">
               <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border border-purple-200/50 hover:border-purple-300/70 transform hover:-translate-y-2 hover:scale-105">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100/50 to-pink-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -44,19 +44,6 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-dancing text-xl font-semibold text-slate-700">Fotos</h3>
                   <p className="text-slate-500 text-center text-sm leading-relaxed">Momentos capturados</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/videos" className="group">
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border border-pink-200/50 hover:border-pink-300/70 transform hover:-translate-y-2 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-blue-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative flex flex-col items-center space-y-4">
-                  <div className="p-4 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full group-hover:from-pink-300 group-hover:to-pink-400 transition-all duration-300 shadow-lg">
-                    <Video className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="font-dancing text-xl font-semibold text-slate-700">Videos</h3>
-                  <p className="text-slate-500 text-center text-sm leading-relaxed">En movimiento</p>
                 </div>
               </div>
             </Link>
