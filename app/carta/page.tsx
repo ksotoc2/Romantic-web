@@ -1,31 +1,32 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Mail, Feather } from "lucide-react"
-import Envelope from "@/components/envelope"
+import { useState } from "react";
+import { Mail, Feather } from "lucide-react";
+import Envelope from "@/components/envelope";
 
 export default function CartaPage() {
-  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false)
-  const [cartaContent, setCartaContent] = useState(`Querida amiga,
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const [cartaContent, setCartaContent] = useState(`Hola Romi,
 
-Escribo estas líneas con el corazón lleno de gratitud por haberte conocido. Fuiste una persona especial en mi vida, alguien que dejó una huella profunda en mi corazón.
+No sé cuántas veces pensé en escribirte esto. Siempre lo dejaba para después, como si evitarlo fuera a hacer que todo se acomodara solo. Pero no. La verdad es que llevo tiempo sintiendo que necesito decirte algo, no por drama, ni para buscar una respuesta… sino porque ya no quiero seguir cargando con esto en silencio.
 
-Quiero que sepas que cada momento que compartimos fue valioso para mí. Tu risa, tu forma de ver la vida, esos instantes de complicidad que ahora guardo como tesoros en mi memoria.
+Fuiste una persona muy importante en mi vida. Eso no lo olvido. Compartimos cosas que marcaron una etapa que, por más que duela, valió la pena. Tu compañía, tus palabras, esos momentos que solo entendíamos nosotros… todo eso significó mucho para mí. Y no me da vergüenza decirlo. Me marcaste. Me hiciste sentir cosas reales. Y por un tiempo, de verdad pensé que íbamos a seguir caminando juntos.
 
-Aunque nuestros caminos se han separado, quiero agradecerte por todo lo que me enseñaste, por los momentos de alegría que compartimos y por haber sido parte de mi historia.
+Pero con el tiempo me fui dando cuenta de que las cosas ya no eran lo mismo. Que por más cariño que hubiera, estábamos en sintonías diferentes. Y aunque lo intenté —créeme que lo hice—, seguir en esta especie de limbo, sin saber bien qué éramos o hacia dónde íbamos, me empezó a hacer daño.
 
-No hay rencores en mi corazón, solo cariño y buenos deseos para ti. Espero que la vida te sonría siempre, que encuentres la felicidad que mereces y que todos tus sueños se hagan realidad.
+No te culpo por nada. No hay rencor en mí. Solo necesitaba aceptar que, por mucho que me haya costado soltar, ahora es lo más sano. Me toca cuidar de mí, poner límites, y dejar ir lo que ya no tiene sentido sostener.
 
-Este pequeño rincón digital es mi forma de honrar los recuerdos hermosos que construimos juntos. Aunque ya no estemos en contacto, siempre tendrás un lugar especial en mis pensamientos.
+No escribo esto esperando que cambie algo. No busco una reacción, ni una explicación. Solo necesitaba despedirme de verdad. Hacerlo con calma, con claridad, con todo lo que siento. Porque quedarme callado solo me mantenía atado a algo que ya no existe.
 
-Te deseo lo mejor en esta nueva etapa de tu vida. Que seas muy feliz, que encuentres paz y que siempre tengas motivos para sonreír.
+Gracias por haber sido parte de mi historia. Gracias por los buenos momentos, por lo que aprendí, incluso por lo que dolió. Te deseo de corazón lo mejor. Que encuentres a personas que te quieran bien, que te sumen, que te acompañen como mereces.
 
-Con cariño sincero y los mejores deseos,
-Alguien que te recuerda con afecto.`)
+Este es mi cierre. Mi forma de soltar, con cariño, pero también con firmeza. Porque ya entendí que seguir arrastrando algo que ya terminó, solo me impide seguir adelante.
+
+Cuídate mucho.`);
 
   const handleOpenEnvelope = () => {
-    setIsEnvelopeOpen(true)
-  }
+    setIsEnvelopeOpen(true);
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -39,7 +40,10 @@ Alguien que te recuerda con afecto.`)
                 <div className="relative flex items-center justify-center space-x-2">
                   <Mail className="h-12 w-12 text-slate-500 animate-pulse" />
                   <Feather className="h-8 w-8 text-purple-400 animate-float-gentle" />
-                  <Mail className="h-12 w-12 text-blue-400 animate-pulse" style={{ animationDelay: "1s" }} />
+                  <Mail
+                    className="h-12 w-12 text-blue-400 animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  />
                 </div>
               </div>
               <h1 className="font-dancing text-4xl md:text-6xl font-bold bg-gradient-to-r from-slate-600 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-6 mt-8">
@@ -87,10 +91,22 @@ Alguien que te recuerda con afecto.`)
                 <div className="px-8 md:px-12 pb-8">
                   <div className="flex justify-center space-x-4">
                     <Mail className="h-5 w-5 text-slate-400 animate-pulse" />
-                    <Feather className="h-4 w-4 text-purple-400 animate-pulse" style={{ animationDelay: "0.5s" }} />
-                    <Mail className="h-5 w-5 text-blue-400 animate-pulse" style={{ animationDelay: "1s" }} />
-                    <Feather className="h-4 w-4 text-slate-400 animate-pulse" style={{ animationDelay: "1.5s" }} />
-                    <Mail className="h-5 w-5 text-purple-400 animate-pulse" style={{ animationDelay: "2s" }} />
+                    <Feather
+                      className="h-4 w-4 text-purple-400 animate-pulse"
+                      style={{ animationDelay: "0.5s" }}
+                    />
+                    <Mail
+                      className="h-5 w-5 text-blue-400 animate-pulse"
+                      style={{ animationDelay: "1s" }}
+                    />
+                    <Feather
+                      className="h-4 w-4 text-slate-400 animate-pulse"
+                      style={{ animationDelay: "1.5s" }}
+                    />
+                    <Mail
+                      className="h-5 w-5 text-purple-400 animate-pulse"
+                      style={{ animationDelay: "2s" }}
+                    />
                   </div>
                 </div>
               </div>
@@ -102,8 +118,14 @@ Alguien que te recuerda con afecto.`)
                 <div className="w-20 h-px bg-gradient-to-r from-transparent to-slate-300"></div>
                 <div className="flex space-x-2">
                   <Feather className="h-6 w-6 text-slate-300 animate-pulse" />
-                  <Mail className="h-6 w-6 text-purple-300 animate-pulse" style={{ animationDelay: "1s" }} />
-                  <Feather className="h-6 w-6 text-blue-300 animate-pulse" style={{ animationDelay: "2s" }} />
+                  <Mail
+                    className="h-6 w-6 text-purple-300 animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  />
+                  <Feather
+                    className="h-6 w-6 text-blue-300 animate-pulse"
+                    style={{ animationDelay: "2s" }}
+                  />
                 </div>
                 <div className="w-20 h-px bg-gradient-to-l from-transparent to-blue-300"></div>
               </div>
@@ -112,5 +134,5 @@ Alguien que te recuerda con afecto.`)
         )}
       </div>
     </div>
-  )
+  );
 }
