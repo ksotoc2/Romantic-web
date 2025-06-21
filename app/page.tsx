@@ -94,9 +94,9 @@ export default function HomePage() {
             <div className="relative p-10 bg-white/60 backdrop-blur-md rounded-3xl border border-white/50 shadow-2xl">
               <Feather className="h-8 w-8 text-slate-400 mx-auto mb-4 animate-float-gentle" />
               <blockquote className="font-dancing text-2xl md:text-3xl text-slate-600 italic text-center leading-relaxed main-title">
-                "Algunos adioses son para siempre,
+                "Hay adioses que duran para siempre, 
                 <br />
-                <span className="text-slate-700">pero los recuerdos hermosos nunca se van."</span>
+                <span className="text-slate-700">pero los recuerdos que nos hicieron sonreír jamás se desvanecen."</span>
               </blockquote>
               <div className="flex justify-center mt-6 space-x-2">
                 <Feather className="h-4 w-4 text-slate-400 animate-pulse" />

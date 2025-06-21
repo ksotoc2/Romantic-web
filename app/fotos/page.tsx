@@ -395,7 +395,7 @@ export default function FotosPage() {
             <Star className="h-12 w-12 text-purple-500 fill-current mx-auto mb-4 relative z-10 animate-bounce" />
           </div>
           <h1 className="font-dancing text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            Fotos de Recuerdo
+            Fotos de Recuerdos
           </h1>
           <p className="text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
             {photos.length} momentos capturados que guardan tu esencia y belleza

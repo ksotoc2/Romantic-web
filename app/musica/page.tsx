@@ -533,7 +533,7 @@ export default function MusicaPage() {
           <h1
             className={`font-dancing text-4xl md:text-6xl font-bold bg-gradient-to-r ${currentColors.primary} bg-clip-text text-transparent mb-6 transition-all duration-1000`}
           >
-            Nuestra Música
+            Música pa' Ti
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-4">
             Las canciones que marcaron nuestros momentos juntos
