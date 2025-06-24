@@ -56,7 +56,7 @@ export default function HomePage() {
                     <Music className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="font-dancing text-xl font-semibold text-slate-700">Música</h3>
-                  <p className="text-slate-500 text-center text-sm leading-relaxed">Nuestras canciones</p>
+                  <p className="text-slate-500 text-center text-sm leading-relaxed">Con las que te asocio</p>
                 </div>
               </div>
             </Link>
