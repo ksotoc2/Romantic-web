@@ -6,6 +6,7 @@ import Navigation from "@/components/navigation"
 import FloatingElements from "@/components/floating-elements"
 import FloatingMessages from "@/components/floating-messages"
 import PageTransition from "@/components/page-transition"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const dancing = Dancing_Script({ subsets: ["latin"], variable: "--font-dancing" })
@@ -18,7 +19,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Hasta Siempre",
   description: "Un lugar donde viven los recuerdos",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,6 +29,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        {/* Script de seguimiento de Plausible */}
+        <Script
+          async
+          defer
+          data-domain="romantic-web.netlify.app"
+          src="https://plausible.io/js/plausible.js"
+        />
+      </head>
       <body
         className={`${inter.variable} ${dancing.variable} ${poppins.variable} font-poppins bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 text-slate-800 min-h-screen`}
       >
