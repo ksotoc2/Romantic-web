@@ -19,8 +19,8 @@ export default function HomePage() {
 
             <div className="space-y-6">
               <h1 className="font-dancing text-5xl md:text-7xl font-bold text-slate-700 leading-tight main-title">
-                Hasta
-                <span className="block text-4xl md:text-6xl mt-2 text-purple-600">Siempre</span>
+                Buenas
+                <span className="block text-4xl md:text-6xl mt-2 text-purple-600">Espero estes bien</span>
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">

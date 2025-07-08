@@ -43,7 +43,7 @@ const Navigation = () => {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple-300 rounded-full animate-ping opacity-75"></div>
               </div>
               <span className="font-dancing text-2xl font-semibold text-slate-700">
-                Hasta Siempre{" "}
+                Hola, buenas{" "}
                 <span className="text-purple-600 transition-all duration-500 transform inline-block min-w-[80px]">
                   {NAMES[currentNameIndex]}
                 </span>
