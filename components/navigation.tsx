@@ -17,7 +17,7 @@ const Navigation = () => {
     { href: "/cumpleanos", label: "Cumpleaños", icon: Gift },
   ]
 
-  const NAMES = ["Romina", "Milca", "Romi", "Lagrimas"]
+  const NAMES = ["Romina", "Milca", "Romi"]
   const [currentNameIndex, setCurrentNameIndex] = useState(0)
 
   useEffect(() => {
